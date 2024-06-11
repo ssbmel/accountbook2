@@ -3,10 +3,9 @@ import DetailPage from './pages/DetailPage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from 'react';
 import { ListContext, fakeData } from './context/Component';
-
-
-
-
+import Login from './loginpages/Login';
+import Sign from './loginpages/Sign'
+;
 
 
 const Router = () => {
@@ -19,6 +18,8 @@ const Router = () => {
         <Routes>
           <Route path="/" element={<Home contents={contents} setContents={setContents}/>} />
           <Route path="/DetailPage/:id" element={<DetailPage contents={contents} setContents={setContents}/> }/>
+          <Route path="/Login" element={<Login/>}/>
+          <Route path="/Sign" element={<Sign/>}/>
         </Routes>
       </BrowserRouter>
     </ListContext.Provider>

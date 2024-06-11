@@ -4,8 +4,8 @@ export const Container = styled.div`
   width: 1000px;
   margin: 100px auto;
   padding: 20px;
-  background-color : rgba(108, 154, 71, 1);
-  border-radius: 20px;
+  background-color : #274211;
+  border-radius: 10px;
   display: gird;
   align-items: center;
   justify-content: center;
@@ -13,7 +13,7 @@ export const Container = styled.div`
 `;
 export const InputBox = styled.div`
   width: 80%;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color : rgba(255, 231, 170, 1);
   text-align: center;
   margin: 40px auto;
@@ -47,7 +47,7 @@ export const MonthBoxList = styled.div`
   width: 80%;
   padding: 20px;
   background-color : rgba(255, 231, 170, 1);
-  border-radius: 20px;
+  border-radius: 10px;
   display: grid;
   place-items: center;
   grid-template-columns: repeat(6, 1fr);
@@ -86,7 +86,7 @@ export const ListContent = styled.div`
   margin: 15px auto;
   padding: 5px;
   background-color : rgba(255, 231, 170, 1);
-  border-radius: 20px;
+  border-radius: 10px;
   height: 100px;
   align-items: center;
   box-sizing: border-box;
