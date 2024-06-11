@@ -4,18 +4,24 @@ import styled from "styled-components";
 const HeaderStyle = styled.div`
   display: flex;
   margin: 20px auto;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: 1000px;
+  font-size: 20px;
+`;
+const StHome = styled.div`
+
 `;
 const HeaderBtn = styled.button`
   border: 1px solid #274211;
   border: none;
   cursor: pointer;
-  font-size: 15px;
-  margin-top: 20px;
+  font-size: 20px;
 `;
+// const StProfile = styled.img`
+//   background-image : url()
+// `;
 
-function Header() {
+function Layout() {
   const navigate = useNavigate();
 
   const goToLogin = () => {
@@ -25,10 +31,12 @@ function Header() {
   return (
     <>
      <HeaderStyle>
+      <StHome>Home</StHome>
+      <div>닉네임</div>
      <HeaderBtn onClick={goToLogin}>로그인</HeaderBtn>
      </HeaderStyle>
     </>
   )
 }
 
-export default Header
+export default Layout

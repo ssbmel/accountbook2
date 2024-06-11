@@ -3,9 +3,9 @@ import DetailPage from './pages/DetailPage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createContext, useEffect, useState } from 'react';
 import Login from './loginpages/Login';
-import Sign from './loginpages/Sign'
-;
+import Sign from './loginpages/Sign';
 import axios from 'axios';
+import Layout from './loginpages/Layout';
 
 export const ListContext = createContext();
 
@@ -34,6 +34,7 @@ const Router = () => {
           <Route path="/DetailPage/:id" element={<DetailPage contents={contents} setContents={setContents}/> }/>
           <Route path="/Login" element={<Login/>}/>
           <Route path="/Sign" element={<Sign/>}/>
+          <Route path="/Layout" element={<Layout/>}/>
         </Routes>
       </BrowserRouter>
     </ListContext.Provider>

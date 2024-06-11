@@ -17,8 +17,9 @@ import {
 } from "../style/stylecomponent.jsx";
 import { Link, Router, json } from "react-router-dom";
 import styled from "styled-components";
-import Header from "../loginpages/Header.jsx";
+import Header from "../loginpages/Layout.jsx";
 import { ListContext } from "../Router.jsx";
+import Layout from "../loginpages/Layout.jsx";
 
 function Home({ contents, setContents }) {
   const [date, setDate] = useState("");
@@ -61,7 +62,7 @@ function Home({ contents, setContents }) {
 
   return (
     <>
-      <Header />
+      <Layout />
       <Container>
         <InputBox>
           <InputContent>
