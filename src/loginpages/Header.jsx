@@ -5,10 +5,14 @@ const HeaderStyle = styled.div`
   display: flex;
   margin: 20px auto;
   justify-content: flex-end;
-  gap: 10px;
   width: 1000px;
+`;
+const HeaderBtn = styled.button`
+  border: 1px solid #274211;
+  border: none;
   cursor: pointer;
-  
+  font-size: 15px;
+  margin-top: 20px;
 `;
 
 function Header() {
@@ -21,7 +25,7 @@ function Header() {
   return (
     <>
      <HeaderStyle>
-     <button onClick={goToLogin}>로그인</button>
+     <HeaderBtn onClick={goToLogin}>로그인</HeaderBtn>
      </HeaderStyle>
     </>
   )

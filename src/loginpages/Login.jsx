@@ -5,9 +5,8 @@ const StContainer = styled.div`
 width: 400px;
 height: 500px;
 background-color: rgba(255, 231, 170, 1);
-margin: 100px auto;
+margin: 200px auto;
 display: flex;
-padding: 0%;
 `;
 const StIdPwBox = styled.div`
 width: auto;

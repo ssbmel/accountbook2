@@ -1,11 +1,11 @@
+import { useState } from "react";
 import styled from "styled-components";
 
-function Sign() {
-  const StContainer = styled.div`
+const StContainer = styled.div`
     width: 400px;
     height: 600px;
     background-color: rgba(255, 231, 170, 1);
-    margin: 100px auto;
+    margin: 200px auto;
     display: flex;
     padding: 0%;
   `;
@@ -35,14 +35,50 @@ function Sign() {
     cursor: pointer;
   `;
 
+function Sign() {
+    const [inputId, setInputId] = useState('');
+    const [inputPw, setInputPw] = useState('');
+    const [inputNickName, setInputNickName] = useState('');
+    const maxIdText = 10;
+    const maxPwText = 15;
+
+    const handleChangeId = (e) => {
+      let newIdValue = e.target.value;
+
+      newIdValue = newIdValue.replace(/[^a-zA-Z0-9]/g, '');
+
+      if(newIdValue.length <= maxIdText) {
+        setInputId(newIdValue);
+      }
+    }
+
+    const handleChangePw = (e) => {
+      let newPwValue = e.target.value;
+
+      newPwValue = newPwValue.replace(/[^a-zA-Z0-9]/g, '');
+
+      if(newPwValue.length <= maxPwText) {
+        setInputPw(newPwValue);
+      }
+    }
+
+    const handleChangeNickName = (e) => {
+      let newNickNameValue = e.target.value;
+
+      newNickNameValue = newNickNameValue.replace(/[^a-zA-Z0-9]/g, '');
+
+      if(newNickNameValue.length <= maxIdText) {
+        setInputNickName(newNickNameValue);
+      }
+    }
 
   return (
     <>
       <StContainer>
         <StIdPwBox>
-          <StInput type="text" placeholder="아이디를 입력하세요." />
-          <StInput type="password" placeholder="비밀번호를 입력하세요." />
-          <StInput type="text" placeholder="닉네임을 입력하세요." />
+          <StInput type="text" placeholder="아이디를 입력하세요." value={inputId} onChange={handleChangeId} />
+          <StInput type="password" placeholder="비밀번호를 입력하세요." value={inputPw} onChange={handleChangePw}/>
+          <StInput type="text" placeholder="닉네임을 입력하세요." value={inputNickName} onChange={handleChangeNickName}/>
           <StBtnBox>
           <StBtn>가입하기</StBtn>
           </StBtnBox>
