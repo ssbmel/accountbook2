@@ -17,8 +17,8 @@ import {
 } from "../style/stylecomponent.jsx";
 import { Link, Router, json } from "react-router-dom";
 import styled from "styled-components";
-import { ListContext } from "../context/Component.js";
 import Header from "../loginpages/Header.jsx";
+import { ListContext } from "../Router.jsx";
 
 function Home({ contents, setContents }) {
   const [date, setDate] = useState("");
@@ -118,7 +118,7 @@ function Home({ contents, setContents }) {
               <MonthBox
                 key={index}
                 onClick={() => onClickMonth(m)}
-                backgroundColor={
+                backgroundcolor={
                   nowMonth === m ? "rgba(249, 181, 4, 1)" : "white"
                 }
                 color={nowMonth === m ? "black" : undefined}

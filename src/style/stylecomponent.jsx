@@ -56,7 +56,7 @@ export const MonthBoxList = styled.div`
   box-sizing: border-box;
 `;
 export const MonthBox = styled.div`
-  background-color: ${(props)=> props.backgroundColor};
+  background-color: ${(props)=> props.backgroundcolor};
   color : ${(props) => props.color};
   border-radius: 10px;
   width: 80px;

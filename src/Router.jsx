@@ -1,16 +1,30 @@
 import Home from './pages/Home';
 import DetailPage from './pages/DetailPage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from 'react';
-import { ListContext, fakeData } from './context/Component';
+import { createContext, useEffect, useState } from 'react';
 import Login from './loginpages/Login';
 import Sign from './loginpages/Sign'
 ;
+import axios from 'axios';
 
+export const ListContext = createContext();
 
 const Router = () => {
-  const savedData = JSON.parse(localStorage.getItem("key")) || fakeData;
-  const [contents, setContents] = useState(savedData);
+  const [contents, setContents] = useState([]);
+
+  
+  useEffect(()=>{
+    const fetchPost = async () => {
+      try {
+        const data = await axios.get("http://localhost:5000/accounts");
+        setContents(data.data);
+      } catch(error){
+        console.log(error);
+      }
+    } 
+    fetchPost();
+  },[]);
+
 
   return (
     <ListContext.Provider value={{ contents }}>

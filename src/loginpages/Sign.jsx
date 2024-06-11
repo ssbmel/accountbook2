@@ -1,15 +1,17 @@
+import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const StContainer = styled.div`
     width: 400px;
-    height: 600px;
+    height: 500px;
     background-color: rgba(255, 231, 170, 1);
     margin: 200px auto;
     display: flex;
     padding: 0%;
   `;
-  const StIdPwBox = styled.div`
+  const StIdPwForm = styled.form`
     width: auto;
     height: auto;
     margin: auto;
@@ -28,19 +30,39 @@ const StContainer = styled.div`
   `;
   const StBtn = styled.button`
     width: 210px;
-    height: 30px;
+    height: 35px;
     background-color: #274211;
     color: white;
     border: none;
     cursor: pointer;
+  `;
+  const StSignUpTitle = styled.h1`
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 30px;
   `;
 
 function Sign() {
     const [inputId, setInputId] = useState('');
     const [inputPw, setInputPw] = useState('');
     const [inputNickName, setInputNickName] = useState('');
+    const navigate = useNavigate();
+
     const maxIdText = 10;
     const maxPwText = 15;
+    
+    const onSubmitHandler = async () => {
+      const user = {
+        id: inputId,
+        password : inputPw,
+        nickname : inputNickName
+      }
+      const { data } = await axios.post("https://moneyfulpublicpolicy.co.kr/register", user);
+      navigate('/Login');
+      console.log(data);
+
+    }
+
 
     const handleChangeId = (e) => {
       let newIdValue = e.target.value;
@@ -61,7 +83,6 @@ function Sign() {
         setInputPw(newPwValue);
       }
     }
-
     const handleChangeNickName = (e) => {
       let newNickNameValue = e.target.value;
 
@@ -72,17 +93,24 @@ function Sign() {
       }
     }
 
+    
+
   return (
     <>
       <StContainer>
-        <StIdPwBox>
+        <StIdPwForm
+        onSubmit={(e)=>{
+          e.preventDefault();
+          onSubmitHandler()
+          alert("회원가입 성공!");}}>
+          <StSignUpTitle>회원가입</StSignUpTitle>
           <StInput type="text" placeholder="아이디를 입력하세요." value={inputId} onChange={handleChangeId} />
           <StInput type="password" placeholder="비밀번호를 입력하세요." value={inputPw} onChange={handleChangePw}/>
           <StInput type="text" placeholder="닉네임을 입력하세요." value={inputNickName} onChange={handleChangeNickName}/>
           <StBtnBox>
           <StBtn>가입하기</StBtn>
           </StBtnBox>
-        </StIdPwBox>
+        </StIdPwForm>
       </StContainer>
     </>
   );
