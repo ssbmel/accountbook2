@@ -14,7 +14,7 @@ export const Container = styled.div`
 export const InputBox = styled.div`
   width: 80%;
   border-radius: 10px;
-  background-color : rgba(255, 231, 170, 1);
+  background-color : #ffffff;
   text-align: center;
   margin: 40px auto;
   padding: 10px 0;
@@ -46,7 +46,7 @@ export const InputBtn = styled.button`
 export const MonthBoxList = styled.div`
   width: 80%;
   padding: 20px;
-  background-color : rgba(255, 231, 170, 1);
+  background-color : #ffffff;
   border-radius: 10px;
   display: grid;
   place-items: center;
@@ -59,6 +59,7 @@ export const MonthBox = styled.div`
   background-color: ${(props)=> props.backgroundcolor};
   color : ${(props) => props.color};
   border-radius: 10px;
+  border: 1px solid rgba(249, 181, 4, 1);
   width: 80px;
   height: 50px;
   margin: 10px;
@@ -85,7 +86,7 @@ export const ListContent = styled.div`
   width: 100%;
   margin: 15px auto;
   padding: 5px;
-  background-color : rgba(255, 231, 170, 1);
+  background-color : #ffffff;
   border-radius: 10px;
   height: 100px;
   align-items: center;

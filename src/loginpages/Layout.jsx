@@ -3,23 +3,35 @@ import styled from "styled-components";
 
 const HeaderStyle = styled.div`
   display: flex;
-  margin: 20px auto;
-  justify-content: space-between;
   width: 1000px;
   font-size: 20px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px auto;
 `;
 const StHome = styled.div`
-
+  cursor: pointer;
 `;
-const HeaderBtn = styled.button`
-  border: 1px solid #274211;
-  border: none;
+const StNickName = styled.div`
+`;
+const StProfile = styled.div`
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 50%;
+  background-color: rebeccapurple;
+`;
+
+const StLoginBtn = styled.div`
   cursor: pointer;
   font-size: 20px;
 `;
-// const StProfile = styled.img`
-//   background-image : url()
-// `;
+const StRightHead = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 15px;
+`;
+
 
 function Layout() {
   const navigate = useNavigate();
@@ -32,8 +44,11 @@ function Layout() {
     <>
      <HeaderStyle>
       <StHome>Home</StHome>
-      <div>닉네임</div>
-     <HeaderBtn onClick={goToLogin}>로그인</HeaderBtn>
+      <StRightHead>
+      <StProfile />
+      <StNickName>닉네임</StNickName>
+     <StLoginBtn onClick={goToLogin}>로그인</StLoginBtn>
+     </StRightHead>
      </HeaderStyle>
     </>
   )
