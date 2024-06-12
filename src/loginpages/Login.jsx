@@ -56,7 +56,8 @@ function Login() {
       "https://moneyfulpublicpolicy.co.kr/login",
       loginUser
     );
-    localStorage.setItem('token', data.accessToken);
+    console.log(data);
+    localStorage.setItem('accessToken', data.accessToken);
     navigate("/");
   };
 

@@ -1,12 +1,13 @@
 import { useRef } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
+import Layout from "../loginpages/Layout";
 
 const DetailContainer = styled.div`
   width: 1000px;
   margin: 100px auto;
   padding: 20px;
-  background-color : rgba(255, 231, 170, 1);
+  background-color: rgba(255, 231, 170, 1);
   border-radius: 20px;
   align-items: center;
   justify-content: center;
@@ -37,10 +38,9 @@ const DetailBtn = styled.button`
   border: none;
 `;
 
-
-const DetailPage = ({contents, setContents}) => {
+const DetailPage = ({ contents, setContents }) => {
   const { id } = useParams();
-  const findData = contents.find((content)=>content.id === id);
+  const findData = contents.find((content) => content.id === id);
 
   const dateRef = useRef(null);
   const itemRef = useRef(null);
@@ -49,54 +49,68 @@ const DetailPage = ({contents, setContents}) => {
 
   const navigate = useNavigate();
 
-
-  const editHandler = () => {   
+  const editHandler = () => {
     const editContent = {
       ...findData,
-      date : dateRef.current.value,
-      item : itemRef.current.value,
-      amount : amountRef.current.value,
-      description : descriptionRef.current.value
-    }
-    const editContents = contents.map(content => content.id === id ? editContent : content)
+      date: dateRef.current.value,
+      item: itemRef.current.value,
+      amount: amountRef.current.value,
+      description: descriptionRef.current.value,
+    };
+    const editContents = contents.map((content) =>
+      content.id === id ? editContent : content
+    );
     alert("수정하시겠습니까?");
-    setContents(editContents)
-    navigate('/'); 
-  } 
-   const deleteHandler = () => {
+    setContents(editContents);
+    navigate("/");
+  };
+  const deleteHandler = () => {
     const deleteContent = {
       ...findData,
-      date : dateRef.current.value,
-      item : itemRef.current.value,
-      amount : amountRef.current.value,
-      description : descriptionRef.current.value
-    }
-    const deleteContents = contents.filter(content => content.id !== deleteContent.id)
+      date: dateRef.current.value,
+      item: itemRef.current.value,
+      amount: amountRef.current.value,
+      description: descriptionRef.current.value,
+    };
+    const deleteContents = contents.filter(
+      (content) => content.id !== deleteContent.id
+    );
     alert("정말로 삭제하시겠습니까?");
-    setContents(deleteContents)
-    navigate('/');
-   }
+    setContents(deleteContents);
+    navigate("/");
+  };
 
   return (
-    <DetailContainer>
-      <DetailListBox>
-        날짜
-        <DetailInput type="date" defaultValue={findData.date} ref={dateRef}/>
-        항목
-        <DetailInput type="text" defaultValue={findData.item} ref={itemRef}/>
-        금액
-        <DetailInput type="text" defaultValue={findData.amount} ref={amountRef}/>
-        내용
-        <DetailInput type="text" defaultValue={findData.description} ref={descriptionRef}/>
-        <DetailBtnBox>
-          <DetailBtn onClick={editHandler}>수정</DetailBtn>
-          <DetailBtn onClick={deleteHandler}>삭제</DetailBtn>
-          <Link to="/">
-            <DetailBtn>◀️Back</DetailBtn>
-          </Link>
-        </DetailBtnBox>
-      </DetailListBox>
-    </DetailContainer>
+    <>
+      <Layout />
+      <DetailContainer>
+        <DetailListBox>
+          날짜
+          <DetailInput type="date" defaultValue={findData.date} ref={dateRef} />
+          항목
+          <DetailInput type="text" defaultValue={findData.item} ref={itemRef} />
+          금액
+          <DetailInput
+            type="text"
+            defaultValue={findData.amount}
+            ref={amountRef}
+          />
+          내용
+          <DetailInput
+            type="text"
+            defaultValue={findData.description}
+            ref={descriptionRef}
+          />
+          <DetailBtnBox>
+            <DetailBtn onClick={editHandler}>수정</DetailBtn>
+            <DetailBtn onClick={deleteHandler}>삭제</DetailBtn>
+            <Link to="/">
+              <DetailBtn>◀️Back</DetailBtn>
+            </Link>
+          </DetailBtnBox>
+        </DetailListBox>
+      </DetailContainer>
+    </>
   );
 };
 

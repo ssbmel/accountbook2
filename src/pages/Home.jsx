@@ -20,6 +20,7 @@ import styled from "styled-components";
 import Header from "../loginpages/Layout.jsx";
 import { ListContext } from "../Router.jsx";
 import Layout from "../loginpages/Layout.jsx";
+import axios from "axios";
 
 function Home({ contents, setContents }) {
   const [date, setDate] = useState("");
