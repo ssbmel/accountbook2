@@ -18,7 +18,6 @@ import {
 import { Link, Router, json } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../loginpages/Layout.jsx";
-import { ListContext } from "../Router.jsx";
 import Layout from "../loginpages/Layout.jsx";
 import axios from "axios";
 
@@ -27,14 +26,45 @@ function Home({ contents, setContents }) {
   const [item, setItem] = useState("");
   const [amount, setAmount] = useState("");
   const [description, setDescription] = useState("");
+  const [accountList, setAccountList] = useState([]);
 
   const clickedMonth = Number(localStorage.getItem("clickedMonth"));
   const [nowMonth, setNowMonth] = useState(clickedMonth);
   const month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
+  const getAccountList = async () => {
+    try{
+      const response = await axios.get("http://localhost:5000/accounts");
+      setAccountList(response.data);
+      } catch(e) {
+      window.alert('뭔가 잘못 받아옴')
+    }
+  };
+  useEffect(() => {
+    getAccountList();
+  },[]);
+
   useEffect(() => {
     localStorage.setItem("key", JSON.stringify(contents));
   }, [contents]);
+
+ const addAccount = async (newContent) => { // 값을 어디서 받죠?
+  // 인풋창에 입력한 데이터를 db에 넣어달라고 부탁한다.
+  try{
+    await axios.post("http://localhost:5000/accounts",newContent);
+  } catch (e) {
+    window.alert('뭔가 잘못됨')
+  }
+ }
+
+  // 1. 서버로부터 데이터를 받아온다.
+
+  // 2. 받아온 데이터를 state에 넣는다.
+  
+  // 3. state를 어떻게 뿌려주지?
+
+  // 개추 
+  
 
   const addContentHandler = () => {
     if (item === "" || amount === "" || description === "") {
@@ -48,7 +78,9 @@ function Home({ contents, setContents }) {
       amount: amount,
       description: description,
     };
-    setContents([...contents, newContent]);
+    // 1. DB에 넣어달라고 부탁한다.
+    addAccount(newContent) // addAccount함수한테 자 이거 받아 (newContent)
+
     setItem("");
     setAmount("");
     setDescription("");
@@ -58,8 +90,6 @@ function Home({ contents, setContents }) {
     setNowMonth(month);
     localStorage.setItem("clickedMonth", month);
   };
-
-  const { contents: test } = useContext(ListContext);
 
   return (
     <>
@@ -131,7 +161,7 @@ function Home({ contents, setContents }) {
           })}
         </MonthBoxList>
         <ListBox>
-          {test
+          {accountList
             .filter(
               (content) =>
                 content.date.split("-")[1] ===

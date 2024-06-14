@@ -1,11 +1,11 @@
 {
-  "accounts" : [
+  "accounts": [
     {
       "id": "25600f72-56b4-41a7-a9c2-47358580e2f8",
       "date": "2024-01-05",
       "item": "식비",
       "amount": 100000,
-      "description": "석우 튜터님 짱"
+      "description": "범수 튜터님 짱"
     },
     {
       "id": "25600f72-53b4-4187-a9c2-47358580e2f8",
@@ -26,14 +26,14 @@
       "date": "2024-02-02",
       "item": "간식",
       "amount": 500,
-      "description": "초코비"
+      "description": "초코비 받아옴!"
     },
     {
       "id": "25143e72-16e2-22a7-a9c2-47358580e2f8",
       "date": "2024-02-02",
       "item": "여행",
       "amount": 1055000,
-      "description": "대만여행"
+      "description": "대만여행 받아옵!"
     },
     {
       "id": "24312f70-97q2-14a7-a9c2-47132950e2t8",
@@ -41,6 +41,13 @@
       "item": "도서",
       "amount": 75000,
       "description": "젊은이들의 흑마법 기피가 심각합니다만, 취직해보니 대우도 좋고 사장도 사역마도 귀여워서 최고입니다!"
+    },
+    {
+      "id": "79c7717d-e5e2-4def-bd9e-69c1d91b1d8f",
+      "date": "2024-06-14",
+      "item": "gg",
+      "amount": "13333",
+      "description": "asdf"
     }
   ]
 }

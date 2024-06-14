@@ -56,9 +56,14 @@ function Login() {
       "https://moneyfulpublicpolicy.co.kr/login",
       loginUser
     );
+
+    if(data !== undefined) {
+      alert("로그인 성공!")
+      localStorage.setItem('accessToken', data.accessToken);
+      navigate("/");
+    }
     console.log(data);
-    localStorage.setItem('accessToken', data.accessToken);
-    navigate("/");
+
   };
 
   const goToSign = () => {
@@ -72,7 +77,6 @@ function Login() {
           onSubmit={(e) => {
             e.preventDefault();
             onSubmitLoginHandler();
-            alert("로그인 성공!");
           }}
         >
           <StLoginTitle>로그인</StLoginTitle>

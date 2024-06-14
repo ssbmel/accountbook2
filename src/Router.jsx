@@ -25,7 +25,7 @@ const Router = () => {
       }
     };
     fetchContents();
-  }, []);
+  }, [userData]);
 
   return (
     <ListContext.Provider value={{ contents, userData, setUserData }}>

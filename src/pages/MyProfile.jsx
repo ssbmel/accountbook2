@@ -2,9 +2,9 @@
 /* eslint-disable no-unused-vars */
 import styled from "styled-components";
 import Layout from "../loginpages/Layout"
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { ListContext } from "../Router";
-import axios from "axios";
+
 
 const DetailContainer = styled.div`
   width: 1000px;
@@ -32,8 +32,13 @@ const StNickName = styled.input`
  border: none;  
 
 `;
-const StProfileButton = styled.button`
-  height: 30px;
+const StProfileButton = styled.div`
+  height: 35px;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 `;
 
@@ -48,7 +53,7 @@ function MyProfile() {
       <DetailContainer>
         <StImg></StImg>
         <StProfileButton>프로필 변경</StProfileButton>
-        <StNickName value={userData.nickname}
+        <StNickName value={userData?.nickname}
         onChange={(e)=>setNickname(e.target.value)}/>
         <StProfileButton>닉네임 변경</StProfileButton>
       </DetailContainer>

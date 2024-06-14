@@ -17,8 +17,7 @@ const HeaderStyle = styled.div`
 const StHome = styled.div`
   cursor: pointer;
 `;
-const StNickName = styled.div`
-`;
+const StNickName = styled.div``;
 const StProfile = styled.div`
   width: 30px;
   height: 30px;
@@ -38,50 +37,58 @@ const StRightHead = styled.div`
   gap: 15px;
 `;
 
-
 function Layout() {
   const navigate = useNavigate();
   const { userData, setUserData } = useContext(ListContext);
   const [nickname, setNickname] = useState("");
-  const token = localStorage.getItem('accessToken');
+  const [loginText, setLoginText] = useState(()=>{
+    return localStorage.getItem("accessToken")? "로그아웃" : "로그인"
+  });
+  const token = localStorage.getItem("accessToken");
 
-  useEffect (()=>{
+  useEffect(() => {
     const fetchUserData = async () => {
-      
-          const userResponse = await axios.get('https://moneyfulpublicpolicy.co.kr/user', {
-            headers: { Authorization: `Bearer ${token}` },
-          });
-          const { id, avatar, nickname} = userResponse.data
-          setUserData({ id, avatar, nickname});
-          setNickname(nickname);
+      if (!token) {
+        return;
+      }
+      const userResponse = await axios.get(
+        "https://moneyfulpublicpolicy.co.kr/user",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      const { id, avatar, nickname } = userResponse.data;
+      setUserData({ id, avatar, nickname });
+      setNickname(nickname);
     };
     fetchUserData();
-  },[])
+  }, []);
 
   const goToLogin = () => {
-    navigate('/Login');
-  }
+    localStorage.clear();
+    navigate("/Login");
+  };
 
   const goToHome = () => {
-    navigate('/');
-  }
+    navigate("/");
+  };
 
   const goToProfile = () => {
-    navigate('/MyProfile')
-  }
+    navigate("/MyProfile");
+  };
 
   return (
     <>
-     <HeaderStyle>
-      <StHome onClick={goToHome}>Home</StHome>
-      <StRightHead>
-      <StProfile onClick={goToProfile}/>
-      <StNickName>{nickname}</StNickName>
-     <StLoginBtn onClick={goToLogin}>로그인</StLoginBtn>
-     </StRightHead>
-     </HeaderStyle>
+      <HeaderStyle>
+        <StHome onClick={goToHome}>Home</StHome>
+        <StRightHead>
+          <StProfile onClick={goToProfile} />
+          <StNickName>{nickname}</StNickName>
+          <StLoginBtn onClick={goToLogin}>{loginText}</StLoginBtn>
+        </StRightHead>
+      </HeaderStyle>
     </>
-  )
+  );
 }
 
-export default Layout
+export default Layout;
